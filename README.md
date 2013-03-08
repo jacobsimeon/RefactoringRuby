@@ -151,7 +151,6 @@ poke(Duck.new)
 
 poke(Dog.new)
 # => "bark"
-
 ```
 
 > Often people, especially computer engineers, focus on the machines. They think,
@@ -165,20 +164,28 @@ poke(Dog.new)
 
 ### Testing Ruby
 
-#### Test Doubles
- - Eliminate coupling to potentially expensive
- operations by using test doubles.
-
-#### Mocks
- - Verify objects recieve the correct *commands*
-
-#### Testing Duck Types
- - Use Interface tests
- - Include them in your mocks
+Basic syntax example
+Assert something is true
 
 --------
 
 ## Examples
+
+
+#### Mocks
+
+ - Verify objects recieve the correct *commands*
+
+#### Testing Duck Types
+
+ - Use Interface tests
+ - Include them in your mocks
+
+#### Test Doubles
+
+ - Eliminate coupling to potentially expensive operations by using test doubles.
+
+### Remove a dependency
 
 ### Encapsulate Field
 
