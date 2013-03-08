@@ -133,6 +133,7 @@ Ruby is dynamically typed.
 If an object looks like a duck, walks like a duck and quacks like a duck, then
 it's a duck.
 
+``` ruby
 class Duck
   def speak; "quack" end
 end
@@ -150,6 +151,8 @@ poke(Duck.new)
 
 poke(Dog.new)
 # => "bark"
+
+```
 
 > Often people, especially computer engineers, focus on the machines. They think,
 > "By doing this, the machine will run faster. By doing this, the machine will
