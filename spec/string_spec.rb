@@ -1,7 +1,7 @@
 require_relative "spec_helper.rb"
 
 describe String do
-  describe '#get_equal_sub_substring' do
+  describe '#equal_sub_substring' do
     it 'handles the first test case' do
       result = "123231".equal_sum_substring.length
       result.must_equal(6)

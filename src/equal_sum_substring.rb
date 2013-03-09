@@ -1,28 +1,25 @@
 class String
-  def equal_sum_halves?
-    return false unless length.even?
+  def equal_sum_substring
+    length.downto(1) do |limit|
+      (0..(length - limit)).each do |offset|
+        candidate = slice(offset, limit)
+        next unless candidate.length.even?
 
-    half_length = length / 2
-    self[0...half_length].sum == self[half_length...length].sum
-  end
+        half_length = candidate.length / 2
 
-  def sum
-    each_char.inject(0) { |t, d| t += d.to_i }
-  end
+        first_half = candidate[0...half_length]
+        second_half = candidate[half_length...length]
 
-  def each_substring &block
-    Enumerator.new do |y|
-      length.downto(1) do |limit|
-        (0..(length - limit)).each do |offset|
-          y.yield slice(offset, limit)
+        first_half_sum = first_half.each_char.inject(0) { |t, d| t += d.to_i }
+        second_half_sum = second_half.each_char.inject(0) { |t, d| t += d.to_i }
+
+        if(first_half_sum == second_half_sum)
+          return candidate
         end
       end
-      y.yield slice(0, 0)
-    end.each(&block)
-  end
+    end
 
-  def equal_sum_substring
-    each_substring.find { |sub| sub.equal_sum_halves? }
+    ""
   end
 end
 
