@@ -22,4 +22,17 @@ describe String do
       result.must_equal(0)
     end
   end
+
+  describe "listing of all substrings" do
+    it "lists all substrings from longest to shortest" do
+      "1234".substrings.must_equal([
+        "1234",
+        "123", "234",
+        "12", "23", "34",
+        "1", "2", "3", "4",
+        ""
+      ])
+    end
+
+  end
 end

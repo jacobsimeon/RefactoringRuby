@@ -22,5 +22,15 @@ class String
 
     ""
   end
+
+  def substrings
+    subs = []
+    length.downto(1) do |limit|
+      (0..(length - limit)).each do |offset|
+        subs << slice(offset, limit)
+      end
+    end
+    subs << ""
+  end
 end
 
