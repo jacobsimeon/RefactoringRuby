@@ -1,7 +1,6 @@
 require 'minitest/spec'
 require 'minitest/autorun'
-require "minitest/reporters"
-MiniTest::Reporters.use! MiniTest::Reporters::SpecReporter.new
+require_relative "../src/equal_sum_substring"
 
 class MiniTest::Spec
   def self.shared_examples
@@ -19,3 +18,4 @@ module Kernel
     self.instance_exec(&behavior)
   end
 end
+
