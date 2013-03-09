@@ -3,18 +3,18 @@ class String
     each_char.inject(0) { |t, d| t += d.to_i }
   end
 
+  def halves
+    half_length = length / 2
+    [self[0...half_length], self[half_length...length]]
+  end
+
   def equal_sum_substring
     length.downto(1) do |limit|
       (0..(length - limit)).each do |offset|
         candidate = slice(offset, limit)
         next unless candidate.length.even?
 
-        half_length = candidate.length / 2
-
-        first_half = candidate[0...half_length]
-        second_half = candidate[half_length...length]
-
-        if(first_half.sum == second_half.sum)
+        if(candidate.halves.first.sum == candidate.halves.last.sum)
           return candidate
         end
       end
