@@ -187,23 +187,34 @@ end
 
 ## Initial requirement
 
+`git checkout -b initial-implementation`
+
 ## Algorithm Basics
 ## Review initial implementation
 ## Review initial test suite
 
+## Encapsulate field
+  - target
+  (step-1)
+
 ## Extract Method
   - sum 
+  (step-2)
   - halves 
-  - equal_sum_halves?
+  (step-3)
+  - equal_sum_halves? 
+  (step-4)
 
 ## Delegate
   - slice
   - each_char
   - length
+  (step 5)
 
 ## Encapsulate field
   - remove enumeration algorithm
   - place into substrings method
+  (step-6)
 
 ## New Requirement
   - log each candidate to the database
@@ -212,7 +223,8 @@ end
   - write log method that sleeps 3 seconds
   - run tests
   - painful!
-
+ (step-7)
+ 
 ## Dependency Injection
   - add constructor argument
   - raise exception if logger is nil
@@ -220,15 +232,29 @@ end
 ## Test Double (mock logger)
   - Eliminate coupling to potentially expensive operations by using test doubles.
   - Verify objects recieve the correct *commands*
+(step 8)
 
 ## Interface of logger has changed
   - `log` is now `archive_candidate`
   - make sure to change in the long log method
+(step 9)
 
-## We now have a false positive in our tests
+## False positives
   - run tests, nothing fails
-  - when our code won't actually run
+  - when our code won't actually run (Logger does not respond to :log)
+  - we need a failing test!
 
 ## Use an interface spec to avoid false positives
-  - make sure mock logger behaves like a logger
+- add MockLogger
+- run tests
+- hooray! a failing test!
+(step 10)
 
+## Verify mocks adhere to proper interface
+- update MockLogger and FindEqualSumSubstring to mock/call proper methods
+(step 11)
+
+# What we did
+- Refactored algorithm for better readability
+- Removed dependency on expensive operations
+- Verified our duck types adhere to the proper interface
