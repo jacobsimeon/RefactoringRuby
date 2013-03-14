@@ -1,7 +1,7 @@
 class FindEqualSumSubstring
   attr_accessor :target, :logger
-  def initialize(target)
-    @logger = Logger.new
+  def initialize(target, logger)
+    @logger = logger
     @target = target
   end
 

@@ -1,6 +1,7 @@
 require 'minitest/spec'
 require 'minitest/autorun'
 require_relative "../src/equal_sum_substring"
+require_relative "mock_logger.rb"
 
 class MiniTest::Spec
   def self.shared_examples

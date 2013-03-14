@@ -9,7 +9,8 @@ describe FindEqualSumSubstring do
 
   describe description do
     def equal_sum_substring_in(string)
-      @it = FindEqualSumSubstring.new(string)
+      @logger = MockLogger.new
+      @it = FindEqualSumSubstring.new(string, @logger)
       @it.equal_sum_substring
     end
 
@@ -43,7 +44,7 @@ describe FindEqualSumSubstring do
 
     it 'logs each candidate to the database' do
       equal_sum_substring_in("123")
-      @it.logger.messages.length.must_equal(7)
+      @logger.messages.length.must_equal(7)
     end
   end
 end
