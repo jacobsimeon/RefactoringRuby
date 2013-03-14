@@ -49,3 +49,19 @@ describe FindEqualSumSubstring do
   end
 end
 
+behavior_of "a logger" do
+  it "responds to :log" do
+    subject.must_respond_to :archive_candidate
+  end
+end
+
+describe MockLogger do
+  subject { MockLogger.new }
+  must_behave_like "a logger"
+end
+
+describe Logger do
+  subject { Logger.new }
+  must_behave_like "a logger"
+end
+
