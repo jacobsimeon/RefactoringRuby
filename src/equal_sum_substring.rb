@@ -54,7 +54,7 @@ class Logger
   def initialize
     @messages = []
   end
-  def log(message)
+  def archive_candidate(message)
     sleep 0.1
     messages << message
   end
