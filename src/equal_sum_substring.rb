@@ -28,7 +28,7 @@ class FindEqualSumSubstring
 
   def equal_sum_substring
     substrings.find do |s|
-      logger.log(s)
+      logger.archive_candidate(s)
       s.equal_sum_halves?
     end
   end

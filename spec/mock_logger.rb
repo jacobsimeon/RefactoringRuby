@@ -4,7 +4,7 @@ class MockLogger
     @messages = []
   end
 
-  def log(message)
+  def archive_candidate(message)
     messages << message
     message
   end
