@@ -13,7 +13,7 @@ class FindEqualSumSubstring
         half_length = candidate.length / 2
 
         first_half = candidate[0...half_length]
-        second_half = candidate[half_length...@target.length]
+        second_half = candidate[half_length...target.length]
 
         first_half_sum = first_half.each_char.inject(0) { |t, d| t += d.to_i }
         second_half_sum = second_half.each_char.inject(0) { |t, d| t += d.to_i }
