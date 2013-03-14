@@ -9,7 +9,8 @@ describe FindEqualSumSubstring do
 
   describe description do
     def equal_sum_substring_in(string)
-      FindEqualSumSubstring.new(string).equal_sum_substring
+      @it = FindEqualSumSubstring.new(string)
+      @it.equal_sum_substring
     end
 
     it "finds the needle when the entire string is a match" do
@@ -38,6 +39,11 @@ describe FindEqualSumSubstring do
 
     it 'return an empty string when no match is found' do
       equal_sum_substring_in("123456").must_equal("")
+    end
+
+    it 'logs each candidate to the database' do
+      equal_sum_substring_in("123")
+      @it.logger.messages.length.must_equal(7)
     end
   end
 end

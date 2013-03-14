@@ -1,6 +1,7 @@
 class FindEqualSumSubstring
-  attr_accessor :target
+  attr_accessor :target, :logger
   def initialize(target)
+    @logger = Logger.new
     @target = target
   end
 
@@ -26,7 +27,10 @@ class FindEqualSumSubstring
   end
 
   def equal_sum_substring
-    substrings.find { |s| s.equal_sum_halves? }
+    substrings.find do |s|
+      logger.log(s)
+      s.equal_sum_halves?
+    end
   end
 end
 
@@ -42,5 +46,16 @@ class String
 
   def equal_sum_halves?
     length.even? && halves[0].sum == halves[1].sum
+  end
+end
+
+class Logger
+  attr_accessor :messages
+  def initialize
+    @messages = []
+  end
+  def log(message)
+    sleep 0.1
+    messages << message
   end
 end
