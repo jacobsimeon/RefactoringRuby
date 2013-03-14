@@ -41,3 +41,4 @@ describe FindEqualSumSubstring do
     end
   end
 end
+
