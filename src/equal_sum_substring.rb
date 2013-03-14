@@ -10,10 +10,7 @@ class FindEqualSumSubstring
         candidate = target.slice(offset, limit)
         next unless candidate.length.even?
 
-        first_half_sum = candidate.halves[0].each_char.inject(0) { |t, d| t += d.to_i }
-        second_half_sum = candidate.halves[1].each_char.inject(0) { |t, d| t += d.to_i }
-
-        if(first_half_sum == second_half_sum)
+        if(candidate.halves[0].sum == candidate.halves[1].sum)
           return candidate
         end
       end
@@ -27,5 +24,9 @@ class String
   def halves
     half_length = length / 2
     [self[0...half_length], self[half_length...length]]
+  end
+
+  def sum
+    each_char.inject(0) { |t, d| t += d.to_i }
   end
 end
