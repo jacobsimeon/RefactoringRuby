@@ -15,7 +15,7 @@ class FindEqualSumSubstring
   def equal_sum_substring
     length.downto(1) do |limit|
       (0..(length - limit)).each do |offset|
-        candidate = target.slice(offset, limit)
+        candidate = slice(offset, limit)
         return candidate if candidate.equal_sum_halves?
       end
     end
