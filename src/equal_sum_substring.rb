@@ -1,12 +1,13 @@
 class FindEqualSumSubstring
+  attr_accessor :target
   def initialize(target)
     @target = target
   end
 
   def equal_sum_substring
-    @target.length.downto(1) do |limit|
-      (0..(@target.length - limit)).each do |offset|
-        candidate = @target.slice(offset, limit)
+    target.length.downto(1) do |limit|
+      (0..(target.length - limit)).each do |offset|
+        candidate = target.slice(offset, limit)
         next unless candidate.length.even?
 
         half_length = candidate.length / 2
