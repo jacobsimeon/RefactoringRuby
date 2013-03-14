@@ -1,4 +1,5 @@
 # Refactoring Ruby
+
 Jacob Morris  
 creativesoapbox.com  
 jacobmorris.net  
@@ -164,34 +165,70 @@ poke(Dog.new)
 
 ### Testing Ruby
 
+Intro to minitest/spec
 Basic syntax example
-Assert something is true
 
+``` ruby
+it "can add some numbers math" do
+  # arrange
+  adder = NumberAdder.new(1) # fictional class
+
+  # act
+  actual_result = 1.add(2)
+
+  #assert
+  expected_result = 3
+  actual_result.must_equal expected_result
+end
+```
 --------
 
-## Examples
+# Demo
 
+## Initial requirement
 
-#### Mocks
+## Algorithm Basics
+## Review initial implementation
+## Review initial test suite
 
- - Verify objects recieve the correct *commands*
+## Extract Method
+  - sum 
+  - halves 
+  - equal_sum_halves?
 
-#### Testing Duck Types
+## Delegate
+  - slice
+  - each_char
+  - length
 
- - Use Interface tests
- - Include them in your mocks
+## Encapsulate field
+  - remove enumeration algorithm
+  - place into substrings method
 
-#### Test Doubles
+## New Requirement
+  - log each candidate to the database
 
- - Eliminate coupling to potentially expensive operations by using test doubles.
+## Demonstrate pain of dependencies
+  - write log method that sleeps 3 seconds
+  - run tests
+  - painful!
 
-### Remove a dependency
+## Dependency Injection
+  - add constructor argument
+  - raise exception if logger is nil
 
-### Encapsulate Field
+## Test Double (mock logger)
+  - Eliminate coupling to potentially expensive operations by using test doubles.
+  - Verify objects recieve the correct *commands*
 
-### Extract Method
+## Interface of logger has changed
+  - `log` is now `archive_candidate`
+  - make sure to change in the long log method
 
-### Replace conditional with polymorphism
+## We now have a false positive in our tests
+  - run tests, nothing fails
+  - when our code won't actually run
 
-### Composition over inheritance
+## Use an interface spec to avoid false positives
+  - make sure mock logger behaves like a logger
 
