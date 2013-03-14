@@ -9,18 +9,24 @@ class FindEqualSumSubstring
   end
 
   def slice(offset, limit)
-    target.slice(offset.limit)
+    target.slice(offset, limit)
+  end
+
+  def substrings(&block)
+    Enumerator.new do |yielder|
+      length.downto(1) do |limit|
+        (0..(length - limit)).each do |offset|
+          candidate = slice(offset, limit)
+          yielder.yield candidate
+        end
+      end
+      # always include an empty string
+      yielder.yield(slice(0, 0))
+    end.each(&block)
   end
 
   def equal_sum_substring
-    length.downto(1) do |limit|
-      (0..(length - limit)).each do |offset|
-        candidate = target.slice(offset, limit)
-        return candidate if candidate.equal_sum_halves?
-      end
-    end
-
-    ""
+    substrings.find { |s| s.equal_sum_halves? }
   end
 end
 
