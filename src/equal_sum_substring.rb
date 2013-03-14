@@ -8,11 +8,7 @@ class FindEqualSumSubstring
     target.length.downto(1) do |limit|
       (0..(target.length - limit)).each do |offset|
         candidate = target.slice(offset, limit)
-        next unless candidate.length.even?
-
-        if(candidate.halves[0].sum == candidate.halves[1].sum)
-          return candidate
-        end
+        return candidate if candidate.equal_sum_halves?
       end
     end
 
@@ -28,5 +24,9 @@ class String
 
   def sum
     each_char.inject(0) { |t, d| t += d.to_i }
+  end
+
+  def equal_sum_halves?
+    length.even? && halves[0].sum == halves[1].sum
   end
 end
