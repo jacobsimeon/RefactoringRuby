@@ -4,6 +4,14 @@ class FindEqualSumSubstring
     @target = target
   end
 
+  def length
+    target.length
+  end
+
+  def slice(offset, limit)
+    target.slice(offset, limit)
+  end
+
   def equal_sum_substring
     substrings.find { |s| s.equal_sum_halves? }
   end
