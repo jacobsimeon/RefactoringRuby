@@ -5,25 +5,8 @@ class FindEqualSumSubstring
     @target = target
   end
 
-  def length
-    target.length
-  end
-
-  def slice(offset, limit)
-    target.slice(offset, limit)
-  end
-
   def substrings(&block)
-    Enumerator.new do |yielder|
-      length.downto(1) do |limit|
-        (0..(length - limit)).each do |offset|
-          candidate = slice(offset, limit)
-          yielder.yield candidate
-        end
-      end
-      # always include an empty string
-      yielder.yield(slice(0, 0))
-    end.each(&block)
+    target.substrings(&block)
   end
 
   def equal_sum_substring
