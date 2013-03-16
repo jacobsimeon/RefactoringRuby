@@ -38,6 +38,19 @@ class String
   def equal_sum_halves?
     length.even? && halves[0].sum == halves[1].sum
   end
+
+  def substrings(&block)
+    Enumerator.new do |yielder|
+      length.downto(1) do |limit|
+        (0..(length - limit)).each do |offset|
+          candidate = slice(offset, limit)
+          yielder.yield candidate
+        end
+      end
+      # always include an empty string
+      yielder.yield(slice(0, 0))
+    end.each(&block)
+  end
 end
 
 class Logger
