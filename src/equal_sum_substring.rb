@@ -9,7 +9,7 @@ class FindEqualSumSubstring
   end
 
   def slice(offset, limit)
-    target.slice(offset.limit)
+    target.slice(offset, limit)
   end
 
   def equal_sum_substring
