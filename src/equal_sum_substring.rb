@@ -5,14 +5,6 @@ class FindEqualSumSubstring
     @target = target
   end
 
-  def length
-    target.length
-  end
-
-  def slice(offset, limit)
-    target.slice(offset, limit)
-  end
-
   def substrings(&block)
     target.substrings(&block)
   end
